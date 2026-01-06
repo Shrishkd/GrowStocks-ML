@@ -26,39 +26,32 @@ The goal is to assess how ML signals behave when translated into an actual tradi
 
 ---
 
-## Backtesting Setup
+## ICICI Bank — ML Backtesting Result
 
-- Market: **NSE (India)**
-- Asset: **Reliance Industries**
-- Model: Random Forest (probability-based signals)
-- Validation: Time-series–aware split
+This section presents the backtesting outcome of a machine learning–driven trading strategy applied to **ICICI Bank (NSE)**.
+
+### Setup
+- Model: Random Forest (probability-based directional signals)
+- Validation: Time-series split (no random shuffling)
 - Strategy:
-  - Threshold-based entry using predicted probabilities
+  - Threshold-based trade entry
   - Multi-day holding period
   - Transaction costs included
 - Benchmark: Buy & Hold
 
----
-
-## Visualization Backtesting (Equity curve)
-
-Below is the backtest equity curve comparing the **ML strategy** with a **Buy & Hold** baseline:
-
-<img width="1001" height="470" alt="image" src="https://github.com/user-attachments/assets/5a5f9d93-4c51-4a29-bd06-9c8c44154d67" />
-
-- The ML strategy significantly reduced drawdowns compared to buy-and-hold, demonstrating effective risk control during adverse market regimes. Further optimization focused on improving return capture.
-- My ML model behaved as a downside-risk filter, significantly reducing drawdowns relative to buy-and-hold. This validates the robustness of the feature set and execution logic, even before alpha optimization.
+### Result (Equity Curve)
+<img width="1001" height="470" alt="image" src="https://github.com/user-attachments/assets/2847e1bf-5d76-4403-b7f2-e3e124831ae9" />
 
 
----
+### Interpretation
+- The ML strategy underperformed Buy & Hold in this period, primarily due to a **strong upward trend** where a conservative, risk-filtering model stayed out of the market.
+- The strategy exhibited **lower volatility and controlled drawdowns**, indicating cautious signal generation rather than overfitting.
+- This highlights a key trade-off in financial ML: **risk reduction vs. return capture**.
 
-## Key Observations
+### Key Takeaway
+The result demonstrates that ML models must be evaluated not only on returns but on **behavior across market regimes**. In trending markets, simple Buy & Hold can outperform conservative ML strategies, while ML-based risk filters may add value during volatile or drawdown-heavy periods.
 
-- The ML strategy significantly **reduced drawdowns** compared to Buy & Hold
-- Capital remained relatively stable during adverse market regimes
-- Demonstrates ML behaving as a **risk-aware filter**, not an overfitted return engine
-
----
+> This project emphasizes realistic evaluation and honest reporting over exaggerated profitability claims.
 
 ## Disclaimer
 
