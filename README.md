@@ -44,7 +44,7 @@ The goal is to assess how ML signals behave when translated into an actual tradi
 
 Below is the backtest equity curve comparing the **ML strategy** with a **Buy & Hold** baseline:
 
-<img width="1001" height="470" alt="image" src="https://github.com/user-attachments/assets/bda04100-9cbf-44d6-bf32-b096b24083d6" />
+<img width="1001" height="470" alt="image" src="https://github.com/user-attachments/assets/5a5f9d93-4c51-4a29-bd06-9c8c44154d67" />
 
 - The ML strategy significantly reduced drawdowns compared to buy-and-hold, demonstrating effective risk control during adverse market regimes. Further optimization focused on improving return capture.
 - My ML model behaved as a downside-risk filter, significantly reducing drawdowns relative to buy-and-hold. This validates the robustness of the feature set and execution logic, even before alpha optimization.
