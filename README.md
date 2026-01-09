@@ -1,3 +1,96 @@
+# 📈 Growstocks (ML Based Stock Buy Decision System)
+
+**Author:** Shrish  
+**Degree:** B.Tech CSE (AI/ML)
+
+---
+
+## 🚀 Project Overview
+
+This project is an end-to-end **Machine Learning–based decision-support system** that predicts whether a user should **BUY or DO NOT BUY** a selected Indian stock.
+
+> ⚠️ This is **NOT a trading bot** and does **NOT execute trades**.  
+> The system is designed purely for **educational, analytical, and decision-support purposes**.
+
+Instead of predicting stock prices or claiming profitability, the project focuses on a more **realistic and interview-safe ML objective**:
+
+> **“Should I consider buying this stock today based on recent market behavior?”**
+
+---
+
+## ✨ Key Features
+
+- ✅ BUY / DO NOT BUY recommendation  
+- 📊 Probability-based confidence score  
+- 🧠 Stock-specific ML models  
+- 🔁 Walk-forward validation  
+- 🧪 Offline backtesting for evaluation  
+- 🌐 FastAPI backend  
+- 🎨 Modern React frontend  
+
+---
+
+## 🎯 Problem Formulation
+
+### Input
+- Historical stock price data  
+- Technical indicators  
+- Market index signals (NIFTY, BANKNIFTY)
+
+### Output
+- **Decision:** BUY or DO NOT BUY  
+- **Probability:** Likelihood of positive future return  
+- **Signal Strength:** Low / Medium / High  
+
+---
+
+## 🧠 Machine Learning Approach
+
+### Target Definition (Important)
+
+Instead of predicting **next-day price movement** (which is extremely noisy), the model predicts:
+
+> **Whether the stock price will be higher after N future trading days**
+
+
+- `target = 1` → BUY candidate  
+- `target = 0` → DO NOT BUY  
+
+This formulation aligns much better with **real-world buy decisions**.
+
+---
+
+## 🧩 Feature Engineering
+
+The following features are used consistently across all stocks:
+
+- `return`
+- `sma_20`
+- `sma_50`
+- `rsi`
+- `volatility`
+- `nifty_return`
+- `nifty_volatility`
+- `banknifty_return`
+
+All features are computed using **only past data** to avoid data leakage.
+
+---
+
+
+🧪 Technologies Used
+### Machine Learning
+
+Python, Pandas, NumPy, Scikit-learn (RandomForest)
+
+### Backend
+
+FastAPI, Joblib, Pydantic, CORS Middleware
+
+### Frontend
+
+React (Vite), Axios, Custom CSS (Fintech dark theme)
+
 ## Model Validation (Walk-Forward Analysis)
 
 To ensure time-series correctness and avoid data leakage, the models were evaluated using **walk-forward validation** instead of random train-test splits.
@@ -18,29 +111,21 @@ Results are stored in:
 ### Walk-Forward Validation (Time-Series Correct)
 The model was evaluated using rolling train-test windows across multiple market regimes to ensure temporal generalization. This avoids data leakage and provides a realistic estimate of real-world performance.
 
-# Backtesting
+## 📊 Backtesting (Offline Evaluation Only)
 
-This repository demonstrates a **machine learning–driven backtesting framework** for Indian equities, focusing on **realistic evaluation** rather than raw prediction accuracy.
+Backtesting is used **only for evaluation**, not shown to end users.
 
-The goal is to assess how ML signals behave when translated into an actual trading strategy.
+### Purpose
+- Compare ML-based decisions against Buy & Hold  
+- Analyze drawdowns and signal quality  
+- Validate walk-forward predictions  
 
----
+### Example: ICICI Bank Backtest
 
-## ICICI Bank — ML Backtesting Result
-
-This section presents the backtesting outcome of a machine learning–driven trading strategy applied to **ICICI Bank (NSE)**.
-
-### Setup
-- Model: Random Forest (probability-based directional signals)
-- Validation: Time-series split (no random shuffling)
-- Strategy:
-  - Threshold-based trade entry
-  - Multi-day holding period
-  - Transaction costs included
-- Benchmark: Buy & Hold
-
-### Result (Equity Curve)
 <img width="1001" height="470" alt="image" src="https://github.com/user-attachments/assets/2847e1bf-5d76-4403-b7f2-e3e124831ae9" />
+
+> Blue: ML-based decisions  
+> Orange: Buy & Hold  
 
 
 ### Interpretation
@@ -48,11 +133,14 @@ This section presents the backtesting outcome of a machine learning–driven tra
 - The strategy exhibited **lower volatility and controlled drawdowns**, indicating cautious signal generation rather than overfitting.
 - This highlights a key trade-off in financial ML: **risk reduction vs. return capture**.
 
+⚠️ Backtesting results are **NOT financial advice** and **NOT optimized for profit**.
+
+---
+
 ### Key Takeaway
 The result demonstrates that ML models must be evaluated not only on returns but on **behavior across market regimes**. In trending markets, simple Buy & Hold can outperform conservative ML strategies, while ML-based risk filters may add value during volatile or drawdown-heavy periods.
 
 > This project emphasizes realistic evaluation and honest reporting over exaggerated profitability claims.
 
 ## Disclaimer
-
 This project is for **educational purposes only** and does not constitute financial advice.
