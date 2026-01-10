@@ -18,7 +18,7 @@ function App() {
 
     try {
       const res = await axios.get(
-        `https://growstocks-ml-1.onrender.com/predict=${stock}}`
+        `https://growstocks-ml-1.onrender.com/predict=${stock}`
       );
       setResult(res.data);
     } catch (err) {
