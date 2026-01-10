@@ -16,6 +16,8 @@ Instead of predicting stock prices or claiming profitability, the project focuse
 
 > **“Should I consider buying this stock today based on recent market behavior?”**
 
+Live 🔗 : https://growstocks-ml-2.onrender.com
+
 ---
 
 ## ✨ Key Features
